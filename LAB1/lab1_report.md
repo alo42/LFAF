@@ -99,6 +99,8 @@ if __name__ == "__main__":
     main()
 ```
 ### Conclusions
+Overall, this project strengthened both conceptual understanding and programming skills. It clarified how abstract mathematical definitions can be translated into working code and showed how formal language theory forms the foundation for many areas in computer science, including compilers, lexical analysis, and pattern recognition.
+
 
 
 
