@@ -16,9 +16,6 @@ from finite_automaton import FiniteAutomaton
 
 
 def main():
-    # ------------------------------------------------------------------ #
-    #  1. Define Variant 16 automaton                                      #
-    # ------------------------------------------------------------------ #
     states       = {'q0', 'q1', 'q2', 'q3'}
     alphabet     = {'a', 'b'}
     start_state  = 'q0'
@@ -36,34 +33,20 @@ def main():
     ndfa = FiniteAutomaton(states, alphabet, transitions, start_state, accept_states)
     ndfa.display("Variant 16 – Original NDFA")
 
-    # ------------------------------------------------------------------ #
-    #  2. Determinism check                                                #
-    # ------------------------------------------------------------------ #
     print("\n--- Determinism Check ---")
     print(ndfa.determinism_report())
 
-    # ------------------------------------------------------------------ #
-    #  3. Convert FA → Regular Grammar                                     #
-    # ------------------------------------------------------------------ #
     print("\n--- FA → Regular Grammar ---")
     grammar = ndfa.to_regular_grammar()
     grammar.display()
 
-    # ------------------------------------------------------------------ #
-    #  4. NDFA → DFA  (subset construction)                               #
-    # ------------------------------------------------------------------ #
+
     print("\n--- NDFA → DFA (Subset Construction) ---")
     dfa = ndfa.to_dfa()
     dfa.display("Equivalent DFA")
 
     print("\n  DFA determinism check:", "PASS ✓" if dfa.is_deterministic() else "FAIL ✗")
 
-    # ------------------------------------------------------------------ #
-    #  5. (Optional) Render graphs                                         #
-    # ------------------------------------------------------------------ #
-    print("\n--- Graphical Representation (optional) ---")
-    ndfa.render_graph(filename="ndfa_variant16")
-    dfa.render_graph(filename="dfa_variant16")
 
 
 if __name__ == "__main__":

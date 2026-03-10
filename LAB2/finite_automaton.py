@@ -95,14 +95,12 @@ class FiniteAutomaton:
         Converts the NDFA to an equivalent DFA using the subset construction.
 
         DFA states are frozensets of NDFA states.
-        A dead / sink state is added only when a transition leads nowhere.
+        Transitions that lead nowhere are simply omitted — no dead/sink state.
         """
-        DEAD = frozenset()   # the sink state
-
         start_dfa  = frozenset([self.start_state])
         worklist   = [start_dfa]
         visited    = set()
-        dfa_trans  = {}      # {(frozenset, sym): frozenset}
+        dfa_trans  = {}      # {(frozenset, sym): frozenset} — only non-empty targets
 
         while worklist:
             current = worklist.pop()
@@ -111,32 +109,26 @@ class FiniteAutomaton:
             visited.add(current)
 
             for sym in self.alphabet:
-                # Union of all NDFA targets from every state in the current subset
                 reached = frozenset(
                     nxt
                     for state in current
                     for nxt in self.transitions.get((state, sym), set())
                 )
+                # Skip transitions that lead nowhere — no dead state needed
+                if not reached:
+                    continue
                 dfa_trans[(current, sym)] = reached
                 if reached not in visited:
                     worklist.append(reached)
 
         # Build human-readable state names
         def name(fs: frozenset) -> str:
-            if not fs:
-                return "∅"
             return "{" + ",".join(sorted(fs)) + "}"
 
-        dfa_states_raw   = visited | {DEAD} if DEAD in dfa_trans.values() else visited
-        # Ensure DEAD is included if any transition leads to it
-        all_targets = set(dfa_trans.values())
-        if DEAD in all_targets:
-            dfa_states_raw.add(DEAD)
-
-        dfa_states       = {name(s) for s in dfa_states_raw}
+        dfa_states       = {name(s) for s in visited}
         dfa_start        = name(start_dfa)
-        dfa_accept       = {name(s) for s in dfa_states_raw
-                            if s & self.accept_states}  # non-empty intersection
+        dfa_accept       = {name(s) for s in visited
+                            if s & self.accept_states}
         dfa_transitions  = {}
         for (fs, sym), target in dfa_trans.items():
             src = name(fs)
