@@ -14,12 +14,17 @@ A **lexeme** is the raw substring extracted from the source (e.g. the characters
 
 Token categories found in most languages include:
 
-- **Literals** — integers, floats, strings, booleans.
-- **Identifiers** — user-defined names (variables, functions).
-- **Keywords** — reserved words with special meaning (`if`, `while`, `return`, `sin`, …).
-- **Operators** — arithmetic, relational, logical, assignment.
-- **Delimiters** — parentheses, braces, commas, semicolons.
-- **Comments / whitespace** — typically discarded before a token is emitted.
+1)**Literals** — integers, floats, strings, booleans.
+
+2)**Identifiers** — user-defined names (variables, functions).
+
+3)**Keywords** — reserved words with special meaning (`if`, `while`, `return`, `sin`, …).
+
+4)**Operators** — arithmetic, relational, logical, assignment.
+
+5)**Delimiters** — parentheses, braces, commas, semicolons.
+
+6)**Comments / whitespace** — typically discarded before a token is emitted.
 
 A lexer operates with a single left-to-right pass, applying the **maximal-munch** principle: always consume the longest possible match before emitting a token. One character of look-ahead is sufficient to disambiguate most multi-character operators (`==` vs `=`, `!=` vs `!`, `<=` vs `<`, etc.).
 
@@ -30,12 +35,12 @@ A lexer operates with a single left-to-right pass, applying the **maximal-munch*
 1. Understand what lexical analysis is and where it fits in a compiler pipeline.
 2. Get familiar with the inner workings of a lexer / scanner / tokeniser.
 3. Implement a sample lexer for a simple scripting language that supports:
-   - Integer and floating-point literals (including scientific notation).
-   - String literals with escape sequences.
-   - Trigonometric keywords (`sin`, `cos`, `tan`, `asin`, `acos`, `atan`).
-   - Control-flow keywords (`let`, `if`, `else`, `while`, `return`, `true`, `false`).
-   - Arithmetic, relational, logical, and assignment operators.
-   - Single-line (`//`) and block (`/* … */`) comments.
+   a)Integer and floating-point literals (including scientific notation).
+   b)String literals with escape sequences.
+   c)Trigonometric keywords (`sin`, `cos`, `tan`, `asin`, `acos`, `atan`).
+   d)Control-flow keywords (`let`, `if`, `else`, `while`, `return`, `true`, `false`).
+   e)Arithmetic, relational, logical, and assignment operators.
+   f)Single-line (`//`) and block (`/* … */`) comments.
 4. Demonstrate the lexer on five representative input programs.
 
 ---
