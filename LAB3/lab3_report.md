@@ -439,7 +439,7 @@ Token(EOF          | ''         | line 5, col 39)
 
 ## References
 
-- Cojuhari I., Drumea V. *Formal Languages and Finite Automata – Guide for practical lessons.* Technical University of Moldova, 2022.
-- LLVM Project. *My First Language Frontend with LLVM Tutorial.* https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/LangImpl01.html
-- Wikipedia. *Lexical analysis.* https://en.wikipedia.org/wiki/Lexical_analysis
-- Aho A.V., Lam M.S., Sethi R., Ullman J.D. *Compilers: Principles, Techniques, and Tools.* 2nd ed. Pearson, 2006.
+1) Cojuhari I., Drumea V. *Formal Languages and Finite Automata – Guide for practical lessons.* Technical University of Moldova, 2022.
+2) LLVM Project. *My First Language Frontend with LLVM Tutorial.* https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/LangImpl01.html
+3) Wikipedia. *Lexical analysis.* https://en.wikipedia.org/wiki/Lexical_analysis
+4) Aho A.V., Lam M.S., Sethi R., Ullman J.D. *Compilers: Principles, Techniques, and Tools.* 2nd ed. Pearson, 2006.
